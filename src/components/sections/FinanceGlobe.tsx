@@ -12,8 +12,8 @@ export function FinanceGlobe() {
     offset: ['start end', 'end start'],
   });
 
-  // Parallax movement calculations
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
+  // Smooth parallax scroll
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['8%', '-8%']);
 
   return (
@@ -22,13 +22,13 @@ export function FinanceGlobe() {
       ref={targetRef}
       className="relative z-20 w-full min-h-screen py-24 px-6 md:px-10 flex items-center justify-center overflow-hidden bg-[#050608]"
     >
-      {/* Soft Ambient Background Glows */}
+      {/* Background Soft Glows */}
       <div 
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[550px] h-[550px] bg-[#e8a94a]/15 blur-[160px] rounded-full pointer-events-none -z-10" 
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#e8a94a]/12 blur-[160px] rounded-full pointer-events-none -z-10" 
         aria-hidden="true"
       />
       <div 
-        className="absolute top-1/2 right-1/3 -translate-y-1/2 w-[400px] h-[400px] bg-[#4a90e2]/15 blur-[140px] rounded-full pointer-events-none -z-10" 
+        className="absolute top-1/2 right-1/3 -translate-y-1/2 w-[450px] h-[450px] bg-[#4a90e2]/10 blur-[150px] rounded-full pointer-events-none -z-10" 
         aria-hidden="true"
       />
 
@@ -60,32 +60,45 @@ export function FinanceGlobe() {
           </div>
         </motion.div>
 
-        {/* Right Column: Seamless Floating Globe (No Box/Borders) */}
+        {/* Right Column: Seamless Blended Globe Visual */}
         <motion.div
           style={{ y: imageY }}
           className="relative w-full aspect-square flex items-center justify-center"
         >
-          {/* Floating and Radial Blend Container */}
+          {/* Container with explicit WebKit mask to cut off all 4 outer corners */}
           <motion.div
-            className="relative w-full h-full flex items-center justify-center [mask-image:radial-gradient(circle,black_55%,transparent_85%)]"
+            className="relative w-full h-full flex items-center justify-center"
+            style={{
+              WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 65%)',
+              maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 65%)',
+            }}
             animate={{ 
-              y: [-14, 14, -14],
-              rotate: [0, 1.5, -1.5, 0],
-              scale: [0.98, 1.02, 0.98]
+              y: [-12, 12, -12],
+              rotate: [0, 1.2, -1.2, 0],
+              scale: [0.97, 1.02, 0.97]
             }}
             transition={{ 
-              duration: 7, 
+              duration: 6, 
               repeat: Infinity, 
               ease: "easeInOut" 
             }}
           >
+            {/* The Globe PNG */}
             <Image
               src="/finance-globe.png"
               alt="Global Financial Data Visual"
-              width={700}
-              height={700}
-              className="w-full h-full object-contain pointer-events-none drop-shadow-[0_0_50px_rgba(232,169,74,0.15)]"
+              width={800}
+              height={800}
+              className="w-full h-full object-cover pointer-events-none scale-110"
               priority
+            />
+
+            {/* Dark vignette overlay to guarantee seamless blending into #050608 */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at center, transparent 25%, #050608 68%)'
+              }}
             />
           </motion.div>
         </motion.div>

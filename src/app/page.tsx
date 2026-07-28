@@ -8,7 +8,7 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function HomePage() {
   return (
-    <>
+    <main className="relative w-full min-h-screen overflow-y-auto overflow-x-hidden">
       <Hero />
       <About />
       <Experience />
@@ -16,6 +16,6 @@ export default function HomePage() {
       <Certifications />
       <Education />
       <Contact />
-    </>
+    </main>
   );
 }

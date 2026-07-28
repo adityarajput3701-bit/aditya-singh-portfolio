@@ -38,8 +38,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const personJsonLd = buildPersonJsonLd();
 
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-body">
+    <html 
+      lang="en" 
+      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+    >
+      <body className="font-body bg-[#050608] text-[#edeff3] antialiased min-h-screen relative overflow-x-hidden selection:bg-[#e8a94a] selection:text-[#050608]">
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger -- structured data must be raw JSON
@@ -51,7 +54,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ScrollProgressBar />
         <CursorGlow />
         <Navbar />
-        <main id="main-content">{children}</main>
+        <main id="main-content" className="relative z-10 w-full min-h-screen">
+          {children}
+        </main>
         <Footer />
         <BackToTop />
       </body>

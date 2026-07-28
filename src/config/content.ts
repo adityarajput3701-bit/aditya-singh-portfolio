@@ -23,7 +23,7 @@ export const siteContent: SiteContent = {
   about: {
     paragraph:
       "Numbers tell a story before words do — that's what drew me into accounting and finance in the first place. I'm a detail-oriented Accounts Executive at LINK MIDDLE EAST LIMITED in Dubai, with hands-on UAE experience across financial operations, VAT compliance, and general ledger management. I work daily in FACTS ERP and Tally ERP, and lean on advanced Excel — Pivot Tables, VLOOKUP/XLOOKUP, INDEX MATCH — for reconciliations, invoice processing, and financial reporting. I coordinate closely with sales and procurement teams to keep cash flow visibility accurate through month-end close, and manage VAT filing and FTA compliance for trading operations. I hold a Bachelor of Business Administration from Maharishi Markandeshwar University, and what draws me to this field is the problem-solving underneath the numbers — figuring out why an account doesn't balance, or how a set of financials tells the real story of a business.",
-    goal: "Long-term goal: investment analysis and portfolio management.",
+    goal: "Building toward the CFA — developing technical and quantitative analysis skills through algorithmic trading indicator design.",
   },
   experience: [
     {
@@ -68,6 +68,7 @@ export const siteContent: SiteContent = {
     "Microsoft Office",
     "Pivot Tables & VLOOKUP/XLOOKUP",
     "Tally ERP",
+    "Technical Analysis & Algorithmic Indicator Design (Pine Script)",
     "UAE VAT Compliance & FTA Filing",
   ],
   certifications: [

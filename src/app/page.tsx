@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { FinanceGlobe } from "@/components/sections/FinanceGlobe";
 import { About } from "@/components/sections/About";
 import { Experience } from "@/components/sections/Experience";
 import { Skills } from "@/components/sections/Skills";
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <main className="relative w-full min-h-screen overflow-y-auto overflow-x-hidden">
       <Hero />
+      <FinanceGlobe />
       <About />
       <Experience />
       <Skills />

@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { FinanceGlobe } from "@/components/sections/FinanceGlobe";
 import { About } from "@/components/sections/About";
+import { QuoteBreak } from "@/components/sections/QuoteBreak";
 import { Experience } from "@/components/sections/Experience";
 import { Skills } from "@/components/sections/Skills";
 import { Certifications } from "@/components/sections/Certifications";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Hero />
       <FinanceGlobe />
       <About />
+      <QuoteBreak />
       <Experience />
       <Skills />
       <Certifications />

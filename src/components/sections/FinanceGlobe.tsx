@@ -4,6 +4,14 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
+const DATA_NODES = [
+  { top: '28%', left: '38%', color: '#e8a94a', delay: 0 },
+  { top: '42%', left: '62%', color: '#57d9aa', delay: 0.6 },
+  { top: '58%', left: '33%', color: '#57d9aa', delay: 1.2 },
+  { top: '65%', left: '58%', color: '#e8a94a', delay: 1.8 },
+  { top: '38%', left: '50%', color: '#e8a94a', delay: 2.4 },
+];
+
 export function FinanceGlobe() {
   const targetRef = useRef<HTMLDivElement>(null);
   
@@ -92,6 +100,32 @@ export function FinanceGlobe() {
               className="w-full h-full object-cover pointer-events-none scale-110"
               priority
             />
+
+            {/* Pulsing data nodes */}
+            {DATA_NODES.map((node, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  top: node.top,
+                  left: node.left,
+                  width: 8,
+                  height: 8,
+                  backgroundColor: node.color,
+                  boxShadow: `0 0 12px 2px ${node.color}`,
+                }}
+                animate={{
+                  scale: [0.8, 1.6, 0.8],
+                  opacity: [0.4, 1, 0.4],
+                }}
+                transition={{
+                  duration: 2.8,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: node.delay,
+                }}
+              />
+            ))}
 
             {/* Dark vignette overlay to guarantee seamless blending into #050608 */}
             <div 

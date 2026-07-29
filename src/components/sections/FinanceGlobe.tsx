@@ -20,7 +20,7 @@ export function FinanceGlobe() {
     <section
       id="finance-globe"
       ref={targetRef}
-      className="relative z-20 w-full min-h-screen py-24 px-6 md:px-10 flex items-center justify-center overflow-hidden bg-[#050608]"
+      className="relative z-20 w-full min-h-screen py-24 px-6 md:px-10 flex items-center justify-center overflow-hidden"
     >
       {/* Background Soft Glows */}
       <div 

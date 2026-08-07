@@ -2,25 +2,16 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
-
-const DATA_NODES = [
-  { top: '28%', left: '38%', color: '#e8a94a', delay: 0 },
-  { top: '42%', left: '62%', color: '#57d9aa', delay: 0.6 },
-  { top: '58%', left: '33%', color: '#57d9aa', delay: 1.2 },
-  { top: '65%', left: '58%', color: '#e8a94a', delay: 1.8 },
-  { top: '38%', left: '50%', color: '#e8a94a', delay: 2.4 },
-];
+import { CareerOrbit } from '@/components/sections/CareerOrbit';
 
 export function FinanceGlobe() {
   const targetRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ['start end', 'end start'],
   });
 
-  // Smooth parallax scroll
   const imageY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
   const textY = useTransform(scrollYProgress, [0, 1], ['8%', '-8%']);
 
@@ -30,30 +21,27 @@ export function FinanceGlobe() {
       ref={targetRef}
       className="relative z-20 w-full min-h-screen py-24 px-6 md:px-10 flex items-center justify-center overflow-hidden"
     >
-      {/* Background Soft Glows */}
-      <div 
-        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#e8a94a]/12 blur-[160px] rounded-full pointer-events-none -z-10" 
+      <div
+        className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-[#e8a94a]/12 blur-[160px] rounded-full pointer-events-none -z-10"
         aria-hidden="true"
       />
-      <div 
-        className="absolute top-1/2 right-1/3 -translate-y-1/2 w-[450px] h-[450px] bg-[#4a90e2]/10 blur-[150px] rounded-full pointer-events-none -z-10" 
+      <div
+        className="absolute top-1/2 right-1/3 -translate-y-1/2 w-[450px] h-[450px] bg-[#4a90e2]/10 blur-[150px] rounded-full pointer-events-none -z-10"
         aria-hidden="true"
       />
 
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-        
-        {/* Left Column: Text Content */}
         <motion.div style={{ y: textY }} className="space-y-6">
           <span className="inline-block px-3.5 py-1 text-xs font-mono tracking-wider uppercase bg-[#e8a94a]/10 text-[#e8a94a] rounded-full border border-[#e8a94a]/20">
-            Financial Analytics & Modeling
+            Career Trajectory
           </span>
 
           <h2 className="text-4xl sm:text-5xl font-bold text-[#edeff3] leading-tight font-display">
-            Global Financial Control & <span className="text-[#e8a94a]">Data Insights</span>
+            From Ledgers to <span className="text-[#e8a94a]">Portfolios</span>
           </h2>
 
           <p className="text-[#9198a8] text-lg leading-relaxed">
-            Bridging complex accounting frameworks with forward-looking financial modeling. Experienced across UAE VAT compliance, ERP ledger management, and multi-currency reporting.
+            Building a career path from hands-on accounting toward investment analysis and portfolio management — one milestone at a time.
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -68,75 +56,9 @@ export function FinanceGlobe() {
           </div>
         </motion.div>
 
-        {/* Right Column: Seamless Blended Globe Visual */}
-        <motion.div
-          style={{ y: imageY }}
-          className="relative w-full aspect-square flex items-center justify-center"
-        >
-          {/* Container with explicit WebKit mask to cut off all 4 outer corners */}
-          <motion.div
-            className="relative w-full h-full flex items-center justify-center"
-            style={{
-              WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 65%)',
-              maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1) 32%, rgba(0,0,0,0) 65%)',
-            }}
-            animate={{ 
-              y: [-12, 12, -12],
-              rotate: [0, 1.2, -1.2, 0],
-              scale: [0.97, 1.02, 0.97]
-            }}
-            transition={{ 
-              duration: 6, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          >
-            {/* The Globe PNG */}
-            <Image
-              src="/finance-globe.png"
-              alt="Global Financial Data Visual"
-              width={800}
-              height={800}
-              className="w-full h-full object-cover pointer-events-none scale-110"
-              priority
-            />
-
-            {/* Pulsing data nodes */}
-            {DATA_NODES.map((node, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full pointer-events-none"
-                style={{
-                  top: node.top,
-                  left: node.left,
-                  width: 8,
-                  height: 8,
-                  backgroundColor: node.color,
-                  boxShadow: `0 0 12px 2px ${node.color}`,
-                }}
-                animate={{
-                  scale: [0.8, 1.6, 0.8],
-                  opacity: [0.4, 1, 0.4],
-                }}
-                transition={{
-                  duration: 2.8,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: node.delay,
-                }}
-              />
-            ))}
-
-            {/* Dark vignette overlay to guarantee seamless blending into #050608 */}
-            <div 
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle at center, transparent 25%, #050608 68%)'
-              }}
-            />
-          </motion.div>
+        <motion.div style={{ y: imageY }} className="relative w-full">
+          <CareerOrbit />
         </motion.div>
-
       </div>
     </section>
   );

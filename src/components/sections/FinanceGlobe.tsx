@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CareerOrbit } from '@/components/sections/CareerOrbit';
+import { GlassCard } from '@/components/ui/GlassCard';
 
 export function FinanceGlobe() {
   const targetRef = useRef<HTMLDivElement>(null);
@@ -45,14 +46,14 @@ export function FinanceGlobe() {
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
-            <div className="p-4 rounded-xl bg-[#12151b]/80 border border-white/10 backdrop-blur-md">
+            <GlassCard className="p-4">
               <h3 className="text-[#e8a94a] text-xl font-bold font-mono">FACTS & Tally</h3>
               <p className="text-sm text-[#7a8296] mt-1">ERP Operations & Ledger Flow</p>
-            </div>
-            <div className="p-4 rounded-xl bg-[#12151b]/80 border border-white/10 backdrop-blur-md">
+            </GlassCard>
+            <GlassCard className="p-4">
               <h3 className="text-[#57d9aa] text-xl font-bold font-mono">VAT & FTA</h3>
               <p className="text-sm text-[#7a8296] mt-1">UAE Regulatory Compliance</p>
-            </div>
+            </GlassCard>
           </div>
         </motion.div>
 

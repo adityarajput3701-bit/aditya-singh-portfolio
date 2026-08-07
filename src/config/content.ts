@@ -73,6 +73,10 @@ export const siteContent: SiteContent = {
   ],
   certifications: [
     {
+      title: "Career Essentials in Data Analysis by Microsoft and LinkedIn",
+      href: "https://www.linkedin.com/learning/certificates/65e372218a0025b4110c4c9cb307ccd23a8e5a6e79fa780b276d95a121b1719c",
+    },
+    {
       title: "Corporate Financial Statement Analysis",
       href: "https://www.linkedin.com/learning/certificates/dc2b61d3e7982bb95ce8d686e910d238656abf9c1a128c91af7e724a26d26930",
     },

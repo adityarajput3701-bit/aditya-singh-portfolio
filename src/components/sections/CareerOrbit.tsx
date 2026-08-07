@@ -4,10 +4,10 @@ import { useRef, type MouseEvent } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const CAREER_PATH = [
-  { label: 'Accounts Executive', sub: 'Current', top: 78, left: 10, current: true },
+  { label: 'Accounts Executive', sub: 'Current', top: 78, left: 12, current: true },
   { label: 'Financial Analyst', sub: 'Next', top: 56, left: 34 },
-  { label: 'Investment Analyst', sub: '', top: 34, left: 60 },
-  { label: 'Portfolio Manager', sub: 'Goal', top: 12, left: 84, goal: true },
+  { label: 'Investment Analyst', sub: '', top: 34, left: 56 },
+  { label: 'Portfolio Manager', sub: 'Goal', top: 12, left: 78, goal: true },
 ];
 
 const PARTICLES = [
@@ -53,7 +53,7 @@ export function CareerOrbit() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full aspect-square"
+      className="relative w-full aspect-square max-w-full overflow-hidden"
       style={{ perspective: 1000 }}
     >
       <motion.div
@@ -98,7 +98,7 @@ export function CareerOrbit() {
         {CAREER_PATH.map((node, i) => (
           <motion.div
             key={node.label}
-            className="absolute -translate-x-1/2 -translate-y-1/2"
+            className="absolute -translate-x-1/2 -translate-y-1/2 w-[42vw] sm:w-auto max-w-[220px]"
             style={{ top: `${node.top}%`, left: `${node.left}%` }}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -108,7 +108,7 @@ export function CareerOrbit() {
             <motion.div
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 4 + i, repeat: Infinity, ease: 'easeInOut' }}
-              className={`relative flex flex-col items-center gap-1.5 rounded-xl border px-4 py-3 backdrop-blur-md shadow-lg whitespace-nowrap ${
+              className={`relative flex flex-col items-center gap-1 sm:gap-1.5 rounded-lg sm:rounded-xl border px-2.5 py-2 sm:px-4 sm:py-3 backdrop-blur-md shadow-lg text-center ${
                 node.current
                   ? 'bg-[#12151b]/90 border-[#57d9aa]/40'
                   : node.goal
@@ -118,19 +118,19 @@ export function CareerOrbit() {
             >
               {node.sub && (
                 <span
-                  className={`font-mono text-[10px] uppercase tracking-[0.2em] ${
+                  className={`font-mono text-[8px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] ${
                     node.current ? 'text-[#57d9aa]' : 'text-[#e8a94a]'
                   }`}
                 >
                   {node.sub}
                 </span>
               )}
-              <span className="text-sm font-semibold text-[#edeff3] font-mono">
+              <span className="text-[11px] sm:text-sm font-semibold text-[#edeff3] font-mono leading-tight">
                 {node.label}
               </span>
               {node.goal && (
                 <motion.span
-                  className="absolute -inset-1 rounded-xl border border-[#e8a94a]/40 pointer-events-none"
+                  className="absolute -inset-1 rounded-lg sm:rounded-xl border border-[#e8a94a]/40 pointer-events-none"
                   animate={{ opacity: [0.2, 0.6, 0.2], scale: [1, 1.04, 1] }}
                   transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
                 />

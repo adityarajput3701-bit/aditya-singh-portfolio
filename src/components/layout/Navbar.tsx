@@ -8,6 +8,7 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/utils/cn";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { AiGlow } from "@/components/ui/AiGlow";
 
 const SECTION_IDS = siteContent.nav.map((link) => link.href.slice(1));
 const SCROLL_THRESHOLD = 24;
@@ -46,7 +47,7 @@ export function Navbar() {
             const isActive = activeId === link.href.slice(1);
             return (
               <li key={link.href} className="relative">
-                <a
+                
                   href={link.href}
                   className={cn(
                     "font-mono text-sm tracking-wide text-text-dim transition-colors duration-300 hover:text-gold",
@@ -68,14 +69,16 @@ export function Navbar() {
         </ul>
 
         <div className="hidden md:block">
-          <MagneticButton
-            href="/resume.pdf"
-            download="Aditya_Singh_Resume.pdf"
-            variant="glass"
-            className="px-5 py-2.5 text-xs"
-          >
-            Resume
-          </MagneticButton>
+          <AiGlow>
+            <MagneticButton
+              href="/resume.pdf"
+              download="Aditya_Singh_Resume.pdf"
+              variant="glass"
+              className="px-5 py-2.5 text-xs"
+            >
+              Resume
+            </MagneticButton>
+          </AiGlow>
         </div>
 
         <button

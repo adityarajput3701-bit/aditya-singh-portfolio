@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { siteContent } from "@/config/content";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { AiGlow } from "@/components/ui/AiGlow";
 
 const container = {
   hidden: {},
@@ -29,14 +30,15 @@ export function Hero() {
         animate="show"
         className="mx-auto w-full max-w-content"
       >
-        <motion.div
-          variants={item}
-          className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 backdrop-blur-glass"
-        >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint" />
-          <span className="font-mono text-xs tracking-wide text-text-dim">
-            {person.statusBadge}
-          </span>
+        <motion.div variants={item}>
+          <AiGlow className="mb-6">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 backdrop-blur-glass">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint" />
+              <span className="font-mono text-xs tracking-wide text-text-dim">
+                {person.statusBadge}
+              </span>
+            </div>
+          </AiGlow>
         </motion.div>
 
         <motion.h1

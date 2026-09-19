@@ -47,7 +47,7 @@ export function Navbar() {
             return (
               <li key={link.href} className="relative">
                 
-                  href={link.href}
+                  <a href={link.href}
                   className={cn(
                     "font-mono text-sm tracking-wide text-text-dim transition-colors duration-300 hover:text-gold",
                     isActive && "text-gold"
